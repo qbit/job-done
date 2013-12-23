@@ -1,0 +1,33 @@
+#! /usr/bin/env bash
+
+#   A simple Pushover applet to notify you when a process has finished execution
+#   Usage example `make ; job-done "Application build"`
+#   Written by Calum MacRae 23/12/2013
+
+USAGE='Please include a job name: job-done "Job name"'
+
+# Job Done API token
+TOKEN="aoHWiT4QnXcWFbfNFtSWtVYMdFHGfX"
+# Enter your Pushover API key here (found at http://pushover.net)
+USER_KEY=""
+# Name your job when running job-done
+JOB=$1
+
+notify() {
+  curl -s -X POST \
+  -d "token=${TOKEN}" \
+  -d "user=${USER_KEY}" \
+  -d "message=${JOB} finished" \
+  https://api.pushover.net/1/messages.json
+}
+
+if [ $# -ne 1 ]; then
+  echo -e ${USAGE}
+  exit 1
+fi
+
+if [ $(notify | grep "user identifier is invalid" | wc -l) -gt 0 ]; then
+  echo -e "\nOops! Looks like you need to add your API key to job-done"
+  echo    "Get your key at http://pushover.net/"
+  exit 1
+fi
