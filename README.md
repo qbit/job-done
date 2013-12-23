@@ -9,7 +9,7 @@ Job Done is extremely simple. I created it with the idea that one might want to 
 
 For instance, starting a compile job:
 
-    `make ; job-done "Some-application build"`
+    make ; job-done "Some-application build"
 In this case, once the software has compiled, a push notification would be sent with the message "Some-application build finished".
 
 Get started
