@@ -16,6 +16,13 @@ Get started
 -----------
 Well, there's not much to be done. Simply get the script, add your Pushover API key, then place it somewhere in your `$PATH`.
 
+Example ~/.job-donerc
+---------------------
+
+```
+USER_KEY:d41d8cd98f00b204e9800998ecf8427e
+```
+
 Take a look
 -----------
 
